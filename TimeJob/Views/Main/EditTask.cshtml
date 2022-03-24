@@ -1,0 +1,46 @@
+﻿@model MainViewModel
+
+
+<div align="center">
+
+    <h3>Edit Task</h3>
+
+    <form align="center" method="post" asp-controller="Main" asp-action="EditTaskk">
+        
+   
+        <table border="1" align="center">
+            <caption class="align-bottom">Table Task</caption>
+            <tr>
+                <th>#</th>
+                <th>Ticket</th>
+                <th>Description</th>
+                <th>Start</th>
+                <th>End</th>
+            </tr>
+            @{ int i = 0;
+
+                foreach (TaskJob TaskJob in Model.AllTask)
+                {
+                    Model.Task = new TaskJob();
+                    Model.Task.id = TaskJob.id;
+                    Model.Task.ProjectId = TaskJob.ProjectId;
+                    i++;
+        <tr align="center"><td>@i</td><td><input value="@TaskJob.TaskName" asp-for="Task.TaskName" /></td><td>"@Model.CommentText"</td><td> <input type="datetime" value="@TaskJob.StartDate.ToString("g")" asp-for="Task.StartDate" /> </td><td> <input type="datetime" value="@TaskJob.CancelDate.ToString("g")" asp-for="Task.CancelDate" />           </td> </tr>
+
+    }
+            }
+        </table>
+        
+       
+        <br />
+        <p></p>
+        <input type="submit" value="Edit" class="btn btn-outline-dark" />
+    </form>
+
+
+
+
+
+
+</div>
+
